@@ -51,7 +51,7 @@ jobs:
           cacheFrom: ghcr.io/${{ github.repository }}
           platform: ${{matrix.platform}}
           push: always
-          imageTag: latest, ${{matrix.ghidra-ver}}ghidra${{matrix.python-ver}}python-${{matrix.debian-name}}
+          imageTag: latest
 
   build-all-vers:
     runs-on: ubuntu-latest
