@@ -1,5 +1,5 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/python-3
+// https://github.com/devcontainers/images/blob/v0.3.11/src/python/.devcontainer/devcontainer.json
 {
 	"name": "ghidra-python",
 	// "build": {
@@ -16,16 +16,26 @@
 	// },
 	"build": {
 		"dockerfile": "./Dockerfile",
-		"context": "."
+		"context": ".",
+		"args": {
+			// Update 'VARIANT' to pick a Python version: 3, 3.10, 3.9, 3.8, 3.7, 3.6
+			// Append -bullseye or -buster to pin to an OS version.
+			// Use -bookwork -bullseye variants on local on arm64/Apple Silicon.
+			"VARIANT": "${localEnv:VARIANT}",
+			// Options			
+			"containerUser": "vscode"
+		}
 	},
 	"features": {
 		"ghcr.io/devcontainers/features/java:1": {
-			"version": "17",
+			// "version": "17",
+			"version": "${localEnv:JAVA-BUILD-VER}",
 			"installGradle": true
 		},
 		"ghcr.io/clearbluejar/features/ghidra:1.1.0": {
 			// Ghidra Version: none, latest, 10.3.2,10.2, 10.1.5, 10.1.4, ...
-			"GHIDRA_VERSION": "latest",
+			//"GHIDRA_VERSION": "latest",
+			"GHIDRA_VERSION": "${localEnv:GHIDRA-BUILD-VER}"
 		}
 	},
 	// ensures java is this when ghidra is installed to support native bins
