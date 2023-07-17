@@ -8,7 +8,7 @@ on: # rebuild when devcontainer is updated
   workflow_dispatch:  
 
 jobs:
-  build-all-vers:
+  build-latest:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -17,8 +17,8 @@ jobs:
         # min Ghidra java version
         java-ver: [17]
         # pyhidra min Ghidra version 10.1.1
-        ghidra-ver: [10.3.2, 10.1.5]
-        python-ver: [3.11, 3.10, 3.9]
+        ghidra-ver: [latest]
+        python-ver: ['3']
         debian-name: [bookworm]
     steps:
       - name: Checkout (GitHub)
@@ -39,21 +39,52 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build all devcontainer Multi-Platform
+      - name: Build latest devcontainer Multi-Platform
         uses: devcontainers/ci@v0.3
         env:
           BUILDX_NO_DEFAULT_ATTESTATIONS: true
           GHIDRA-BUILD-VER: ${{matrix.ghidra-ver}}
           JAVA-BUILD-VER: ${{matrix.java-ver}}
           VARIANT: ${{matrix.python-ver}}-${{matrix.debian-name}}
-
         with:
           imageName: ghcr.io/${{ github.repository }}
           cacheFrom: ghcr.io/${{ github.repository }}
           platform: ${{matrix.platform}}
           push: always
+          imageTag: latest, ${{matrix.ghidra-ver}}ghidra${{matrix.python-ver}}python-${{matrix.debian-name}}
 
-      - name: Build latest devcontainer Multi-Platform
+  build-all-vers:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:        
+        platform: [linux/amd64,linux/arm64]
+        # min Ghidra java version
+        java-ver: [17]
+        # pyhidra min Ghidra version 10.1.1
+        ghidra-ver: [10.3.2, 10.1.5]
+        python-ver: ['3.11', '3.10', '3.9']
+        debian-name: [bookworm]
+    steps:
+      - name: Checkout (GitHub)
+        uses: actions/checkout@v3
+
+      - name: Set up QEMU for multi-architecture builds
+        uses: docker/setup-qemu-action@v2
+
+      - name: Setup Docker buildx for multi-architecture builds
+        uses: docker/setup-buildx-action@v2
+        with:
+          use: true
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build all devcontainers Multi-Platform
         uses: devcontainers/ci@v0.3
         env:
           BUILDX_NO_DEFAULT_ATTESTATIONS: true
