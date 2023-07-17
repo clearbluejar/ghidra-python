@@ -42,7 +42,7 @@ jobs:
       - name: Build latest devcontainer Multi-Platform
         uses: devcontainers/ci@v0.3
         env:
-          BUILDX_NO_DEFAULT_ATTESTATIONS: true
+          # BUILDX_NO_DEFAULT_ATTESTATIONS: true
           GHIDRA-BUILD-VER: ${{matrix.ghidra-ver}}
           JAVA-BUILD-VER: ${{matrix.java-ver}}
           VARIANT: ${{matrix.python-ver}}-${{matrix.debian-name}}
@@ -87,7 +87,7 @@ jobs:
       - name: Build all devcontainers Multi-Platform
         uses: devcontainers/ci@v0.3
         env:
-          BUILDX_NO_DEFAULT_ATTESTATIONS: true
+          # BUILDX_NO_DEFAULT_ATTESTATIONS: true
           GHIDRA-BUILD-VER: ${{matrix.ghidra-ver}}
           JAVA-BUILD-VER: ${{matrix.java-ver}}
           VARIANT: ${{matrix.python-ver}}-${{matrix.debian-name}}
