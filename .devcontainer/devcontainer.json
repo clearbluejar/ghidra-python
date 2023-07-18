@@ -32,7 +32,7 @@
 			"version": "${localEnv:JAVA-BUILD-VER}",
 			"installGradle": true
 		},
-		"ghcr.io/clearbluejar/features/ghidra:1.1.0": {
+		"ghcr.io/clearbluejar/features/ghidra:1.2.0": {
 			// Ghidra Version: none, latest, 10.3.2,10.2, 10.1.5, 10.1.4, ...
 			//"GHIDRA_VERSION": "latest",
 			"GHIDRA_VERSION": "${localEnv:GHIDRA-BUILD-VER}"
