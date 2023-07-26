@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:        
-        platform: [linux/amd64,linux/arm64]
+        # platform: [linux/amd64,linux/arm64]
         # min Ghidra java version
         java-ver: [17]
         # pyhidra min Ghidra version 10.1.1
@@ -49,7 +49,8 @@ jobs:
         with:
           imageName: ghcr.io/${{ github.repository }}
           cacheFrom: ghcr.io/${{ github.repository }}
-          platform: ${{matrix.platform}}
+          # platform: ${{matrix.platform}}
+          platform: linux/amd64,linux/arm64
           push: always
           imageTag: latest
 
@@ -58,7 +59,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:        
-        platform: [linux/amd64,linux/arm64]
+        # platform: [linux/amd64,linux/arm64]
         # min Ghidra java version
         java-ver: [17]
         # pyhidra min Ghidra version 10.1.1
@@ -94,7 +95,8 @@ jobs:
         with:
           imageName: ghcr.io/${{ github.repository }}
           cacheFrom: ghcr.io/${{ github.repository }}
-          platform: ${{matrix.platform}}
+          # platform: ${{matrix.platform}}
+          platform: linux/amd64,linux/arm64
           push: always
           imageTag: ${{matrix.ghidra-ver}}ghidra${{matrix.python-ver}}python-${{matrix.debian-name}}
           
