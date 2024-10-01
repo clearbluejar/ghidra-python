@@ -15,7 +15,7 @@ jobs:
       matrix:        
         # platform: [linux/amd64,linux/arm64]
         # min Ghidra java version
-        java-ver: [17]
+        java-ver: [21]
         # pyhidra min Ghidra version 10.1.1
         ghidra-ver: ['11.2', '11.1.2', '10.4', '10.3.3', '10.2.3', '10.1.5']
         python-ver: ['3.12', '3.11', '3.10', '3.9']
