@@ -27,7 +27,7 @@
 		}
 	},
 	"features": {
-		"ghcr.io/devcontainers/features/java:1": {
+		"ghcr.io/devcontainers/features/java:1.6.1": {
 			// "version": "17",
 			"version": "${localEnv:JAVA-BUILD-VER}",
 			"installGradle": true
