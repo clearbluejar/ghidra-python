@@ -17,7 +17,7 @@ jobs:
         # min Ghidra java version
         java-ver: [21]
         # pyhidra min Ghidra version 10.1.1
-        ghidra-ver: ['11.3.1', '11.2.1', '11.1.2', '10.4', '10.3.3', '10.2.3', '10.1.5']
+        ghidra-ver: ['11.3.2', '11.2.1', '11.1.2', '10.4', '10.3.3', '10.2.3', '10.1.5']
         python-ver: ['3.12', '3.11', '3.10', '3.9']
         debian-name: [bookworm]
     steps:
