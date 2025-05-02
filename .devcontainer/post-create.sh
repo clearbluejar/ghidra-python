@@ -9,4 +9,4 @@ pip install --upgrade pip
 pip install ghidra-stubs
 
 # Install pyhdira
-pip install pyhidra
+pip install pyghidra
