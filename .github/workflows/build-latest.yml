@@ -50,7 +50,7 @@ jobs:
         with:
           imageName: ghcr.io/${{ github.repository }}
           cacheFrom: ghcr.io/${{ github.repository }}
-          #noCache: true
+          noCache: true
           # platform: ${{matrix.platform}}
           platform: linux/amd64,linux/arm64
           push: always
