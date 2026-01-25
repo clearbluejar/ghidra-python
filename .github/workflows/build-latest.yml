@@ -19,7 +19,7 @@ jobs:
         java-ver: [21]
         # pyhidra min Ghidra version 10.1.1
         ghidra-ver: ['latest']
-        python-ver: ['3']
+        python-ver: ['3.13']
         debian-name: [bookworm]
     steps:
       - name: Checkout (GitHub)
