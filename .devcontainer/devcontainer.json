@@ -7,8 +7,8 @@
 	// 	"context": "..",
 	// 	"args": {
 	// 		// Update 'VARIANT' to pick a Python version: 3, 3.10, 3.9, 3.8, 3.7, 3.6
-	// 		// Append -bullseye or -buster to pin to an OS version.
-	// 		// Use -bookwork -bullseye variants on local on arm64/Apple Silicon.
+	// 		// Append -trixie, -bookworm, or -bullseye to pin to an OS version.
+	// 		// Use -trixie or -bookworm variants on local arm64/Apple Silicon.
 	// 		"VARIANT": "3-bullseye",
 	// 		// Options			
 	// 		"containerUser": "vscode"
@@ -19,8 +19,8 @@
 		"context": ".",
 		"args": {
 			// Update 'VARIANT' to pick a Python version: 3, 3.10, 3.9, 3.8, 3.7, 3.6
-			// Append -bullseye or -buster to pin to an OS version.
-			// Use -bookwork -bullseye variants on local on arm64/Apple Silicon.
+			// Append -trixie, -bookworm, or -bullseye to pin to an OS version.
+			// Use -trixie or -bookworm variants on local arm64/Apple Silicon.
 			"VARIANT": "${localEnv:VARIANT}",
 			// Options			
 			"containerUser": "vscode"

@@ -12,19 +12,15 @@ Standard images are based on the full `mcr.microsoft.com/vscode/devcontainers/py
 
 **Tag format:** `{ghidra-version}ghidra{python-version}python-{debian-codename}`
 
-**Available tags:**
-- `12.0.1ghidra3.13python-bookworm`
-- `12.0.1ghidra3.12python-bookworm`
-- `12.0.1ghidra3.11python-bookworm`
-- `12.0.1ghidra3.10python-bookworm`
-- `11.4.3ghidra3.13python-bookworm`
-- `11.4.3ghidra3.12python-bookworm`
-- `11.3.2ghidra3.13python-bookworm`
-- `latest`
+**Versioned tags are built from:**
+- Ghidra: `12.1`, `12.0.4`, `11.4.3`, `11.3.2`
+- Python: `3.13`, `3.12`, `3.11`, `3.10`
+- Debian: `bookworm`, `trixie`
+- Alias: `latest`
 
 ### Slim Images
 
-Slim images use `python:slim-bookworm` as the base instead of the full VS Code devcontainer image, resulting in **~30-40% smaller** image sizes while maintaining the same functionality.
+Slim images use `python:slim-{debian-codename}` as the base instead of the full VS Code devcontainer image, resulting in **~30-40% smaller** image sizes while maintaining the same functionality.
 
 **Features:**
 - Same Ghidra and Python versions as standard images
@@ -34,15 +30,11 @@ Slim images use `python:slim-bookworm` as the base instead of the full VS Code d
 
 **Tag format:** `{ghidra-version}ghidra{python-version}python-{debian-codename}-slim`
 
-**Available tags:**
-- `12.0.1ghidra3.13python-bookworm-slim`
-- `12.0.1ghidra3.12python-bookworm-slim`
-- `12.0.1ghidra3.11python-bookworm-slim`
-- `12.0.1ghidra3.10python-bookworm-slim`
-- `11.4.3ghidra3.13python-bookworm-slim`
-- `11.4.3ghidra3.12python-bookworm-slim`
-- `11.3.2ghidra3.13python-bookworm-slim`
-- `latest-slim`
+**Versioned tags are built from:**
+- Ghidra: `12.0.3`, `11.4.3`, `11.3.2`
+- Python: `3.13`, `3.12`, `3.11`, `3.10`
+- Debian: `bookworm`, `trixie`
+- Alias: `latest-slim`
 
 ## Usage
 
@@ -51,7 +43,7 @@ Slim images use `python:slim-bookworm` as the base instead of the full VS Code d
 ```json
 {
   "name": "Ghidra Python",
-  "image": "ghcr.io/clearbluejar/ghidra-python:12.0.1ghidra3.13python-bookworm"
+  "image": "ghcr.io/clearbluejar/ghidra-python:12.1ghidra3.13python-trixie"
 }
 ```
 
@@ -60,7 +52,7 @@ Slim images use `python:slim-bookworm` as the base instead of the full VS Code d
 ```json
 {
   "name": "Ghidra Python Slim",
-  "image": "ghcr.io/clearbluejar/ghidra-python:12.0.1ghidra3.13python-bookworm-slim"
+  "image": "ghcr.io/clearbluejar/ghidra-python:12.0.3ghidra3.13python-trixie-slim"
 }
 ```
 
@@ -68,10 +60,10 @@ Slim images use `python:slim-bookworm` as the base instead of the full VS Code d
 
 ```bash
 # Standard image
-docker run -it ghcr.io/clearbluejar/ghidra-python:12.0.1ghidra3.13python-bookworm
+docker run -it ghcr.io/clearbluejar/ghidra-python:12.1ghidra3.13python-trixie
 
 # Slim image
-docker run -it ghcr.io/clearbluejar/ghidra-python:12.0.1ghidra3.13python-bookworm-slim
+docker run -it ghcr.io/clearbluejar/ghidra-python:12.0.3ghidra3.13python-trixie-slim
 ```
 
 ## Image Contents
@@ -80,7 +72,7 @@ All images include:
 - Python (3.10, 3.11, 3.12, or 3.13)
 - Java 21 (installed via SDKMAN)
 - Gradle
-- Ghidra (10.3.2 to 12.0.1)
+- Ghidra versions from the build matrices above
 - Git, curl, sudo, and other devcontainer essentials
 
 ## Size Comparison
@@ -95,18 +87,18 @@ All images include:
 ### Build Standard Image
 
 ```bash
-export GHIDRA-BUILD-VER=12.0.1
+export GHIDRA-BUILD-VER=12.1
 export JAVA-BUILD-VER=21
-export VARIANT=3.13-bookworm
+export VARIANT=3.13-trixie
 devcontainer build --workspace-folder . --config .devcontainer/devcontainer.json
 ```
 
 ### Build Slim Image
 
 ```bash
-export GHIDRA-BUILD-VER=12.0.1
+export GHIDRA-BUILD-VER=12.0.3
 export JAVA-BUILD-VER=21
-export VARIANT=3.13-bookworm
+export VARIANT=3.13-slim-trixie
 devcontainer build --workspace-folder . --config .devcontainer/devcontainer-slim.json
 ```
 

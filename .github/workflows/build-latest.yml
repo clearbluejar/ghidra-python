@@ -1,8 +1,9 @@
-name: 'build-latest' 
-on: # rebuild when devcontainer is updated
-  push:
-    paths:
-      - '.devcontainer/**'
+name: 'build-latest'
+on:
+  workflow_run:
+    workflows: ["build-and-push-devcontainer-all-vers"]
+    types:
+      - completed
     branches:
       - main
   workflow_dispatch:
@@ -10,7 +11,11 @@ on: # rebuild when devcontainer is updated
 jobs:
           
    build-latest:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     strategy:
       fail-fast: false
       matrix:        
