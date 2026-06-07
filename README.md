@@ -13,7 +13,7 @@ Standard images are based on the full `mcr.microsoft.com/vscode/devcontainers/py
 **Tag format:** `{ghidra-version}ghidra{python-version}python-{debian-codename}`
 
 **Versioned tags are built from:**
-- Ghidra: `12.1`, `12.0.4`, `11.4.3`, `11.3.2`
+- Ghidra: `12.1.2`, `12.0.4`, `11.4.3`, `11.3.2`
 - Python: `3.13`, `3.12`, `3.11`, `3.10`
 - Debian: `bookworm`, `trixie`
 - Alias: `latest`
@@ -31,7 +31,7 @@ Slim images use `python:slim-{debian-codename}` as the base instead of the full 
 **Tag format:** `{ghidra-version}ghidra{python-version}python-{debian-codename}-slim`
 
 **Versioned tags are built from:**
-- Ghidra: `12.0.3`, `11.4.3`, `11.3.2`
+- Ghidra: `12.1.2`, `12.0.3`, `11.4.3`, `11.3.2`
 - Python: `3.13`, `3.12`, `3.11`, `3.10`
 - Debian: `bookworm`, `trixie`
 - Alias: `latest-slim`
@@ -43,7 +43,7 @@ Slim images use `python:slim-{debian-codename}` as the base instead of the full 
 ```json
 {
   "name": "Ghidra Python",
-  "image": "ghcr.io/clearbluejar/ghidra-python:12.1ghidra3.13python-trixie"
+  "image": "ghcr.io/clearbluejar/ghidra-python:12.1.2ghidra3.13python-trixie"
 }
 ```
 
@@ -52,7 +52,7 @@ Slim images use `python:slim-{debian-codename}` as the base instead of the full 
 ```json
 {
   "name": "Ghidra Python Slim",
-  "image": "ghcr.io/clearbluejar/ghidra-python:12.0.3ghidra3.13python-trixie-slim"
+  "image": "ghcr.io/clearbluejar/ghidra-python:12.1.2ghidra3.13python-trixie-slim"
 }
 ```
 
@@ -60,10 +60,10 @@ Slim images use `python:slim-{debian-codename}` as the base instead of the full 
 
 ```bash
 # Standard image
-docker run -it ghcr.io/clearbluejar/ghidra-python:12.1ghidra3.13python-trixie
+docker run -it ghcr.io/clearbluejar/ghidra-python:12.1.2ghidra3.13python-trixie
 
 # Slim image
-docker run -it ghcr.io/clearbluejar/ghidra-python:12.0.3ghidra3.13python-trixie-slim
+docker run -it ghcr.io/clearbluejar/ghidra-python:12.1.2ghidra3.13python-trixie-slim
 ```
 
 ## Image Contents
@@ -87,7 +87,7 @@ All images include:
 ### Build Standard Image
 
 ```bash
-export GHIDRA-BUILD-VER=12.1
+export GHIDRA-BUILD-VER=12.1.2
 export JAVA-BUILD-VER=21
 export VARIANT=3.13-trixie
 devcontainer build --workspace-folder . --config .devcontainer/devcontainer.json
@@ -96,7 +96,7 @@ devcontainer build --workspace-folder . --config .devcontainer/devcontainer.json
 ### Build Slim Image
 
 ```bash
-export GHIDRA-BUILD-VER=12.0.3
+export GHIDRA-BUILD-VER=12.1.2
 export JAVA-BUILD-VER=21
 export VARIANT=3.13-slim-trixie
 devcontainer build --workspace-folder . --config .devcontainer/devcontainer-slim.json
