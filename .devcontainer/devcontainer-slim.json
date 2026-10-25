@@ -27,9 +27,6 @@
 		}
 	},
 	// ensures java is this when ghidra is installed to support native bins
-	"overrideFeatureInstallOrder": [
-		"ghcr.io/devcontainers/features/java"
-	],
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
